@@ -45,6 +45,7 @@ class BinarySearchTree {
   }
 
   has(data) {
+    let node = this.treeRoot; //test
     function searchWithin(node, data) {
       if (!node) {
         return false;
@@ -134,6 +135,8 @@ class BinarySearchTree {
     if (!this.treeRoot) {
       return;
     }
+
+    let node = this.treeRoot;
     while (node.right) {
       node = node.right;
     }
