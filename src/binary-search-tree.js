@@ -45,8 +45,6 @@ class BinarySearchTree {
   }
 
   has(data) {
-    return searchWithin(this.treeRoot, data);
-
     function searchWithin(node, data) {
       if (!node) {
         return false;
@@ -60,11 +58,26 @@ class BinarySearchTree {
         ? searchWithin(node.left, data)
         : searchWithin(node.right, data);
     }
+    return searchWithin(this.treeRoot, data);
   }
 
-  find(/* data */) {
-    throw new NotImplementedError("Not implemented");
-    // remove line with error and write your code here
+  find(data) {
+    let node = this.treeRoot;
+    function findWithin(node, data) {
+      if (!node) {
+        return null;
+      }
+
+      if (node.data === data) {
+        return node;
+      }
+
+      return data < node.data
+        ? findWithin(node.left, data)
+        : findWithin(node.right, data);
+    }
+
+    return findWithin(this.treeRoot, data);
   }
 
   remove(data) {
